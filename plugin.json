@@ -1,0 +1,16 @@
+{
+  "name": "waiching-sun-writing",
+  "displayName": "WaiChing Sun Academic Writing & Revision",
+  "version": "1.1.0",
+  "description": "Write, structure, and revise academic journal manuscripts, research grant proposals (DoD ARO/AFOSR/ONR, NSF, DOE), and student/co-author drafts in the authentic writing style, mathematical notation, and rhetorical structure of Prof. WaiChing Sun.",
+  "logo": "assets/logo.svg",
+  "author": {
+    "name": "WaiChing Sun",
+    "url": "https://civil.columbia.edu/faculty/waiching-sun"
+  },
+  "suggestedPrompts": [
+    "Use waiching-sun-writing to revise this student draft into concise two-sentence pairs and provide a Revision Summary",
+    "Use waiching-sun-writing (Tier 1 specialist pace) to draft a CMAME formulation section for coupled poromechanics",
+    "Use waiching-sun-writing (Tier 3 Program Manager level) to draft a 2-page DoD white paper with falsifiable hypotheses"
+  ]
+}

@@ -1,0 +1,96 @@
+% wsun_macros.sty
+% Standard Continuum Mechanics, Poromechanics, Lie Group, and SciML Macros
+% Prof. WaiChing Sun Research Group (Columbia University)
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{wsun_macros}[2026/10/30 WaiChing Sun Group Standard Macros]
+
+\RequirePackage{amsmath,amssymb,amsfonts,amsthm,bm,mathtools}
+
+% --- Theorem, Remark, Proposition, and Definition Environments ---
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+% --- Tensor and Vector Formatting ---
+\newcommand{\ten}[1]{\boldsymbol{#1}}
+\newcommand{\tten}[1]{\mathbb{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\tns}[1]{\boldsymbol{#1}}
+
+% --- Differential and Continuum Operators ---
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Grad}{Grad}
+\DeclareMathOperator{\divv}{div}
+\DeclareMathOperator{\Divv}{Div}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\Curl}{Curl}
+\DeclareMathOperator{\sym}{sym}
+\DeclareMathOperator{\skw}{skw}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\dev}{dev}
+\DeclareMathOperator{\detm}{det}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\argmin}{arg\,min}
+\DeclareMathOperator{\argmax}{arg\,max}
+\DeclareMathOperator{\sgn}{sgn}
+
+% --- Standard Continuum Mechanics Tensors ---
+\newcommand{\bF}{\boldsymbol{F}}
+\newcommand{\bC}{\boldsymbol{C}}
+\newcommand{\bB}{\boldsymbol{B}}
+\newcommand{\bE}{\boldsymbol{E}}
+\newcommand{\bI}{\boldsymbol{I}}
+\newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\bS}{\boldsymbol{S}}
+\newcommand{\bsigma}{\boldsymbol{\sigma}}
+\newcommand{\bsigmap}{\boldsymbol{\sigma}'}
+\newcommand{\beps}{\boldsymbol{\varepsilon}}
+\newcommand{\bepsp}{\boldsymbol{\varepsilon}^{\mathrm{p}}}
+\newcommand{\bepsel}{\boldsymbol{\varepsilon}^{\mathrm{e}}}
+\newcommand{\bu}{\boldsymbol{u}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bn}{\boldsymbol{n}}
+\newcommand{\bq}{\boldsymbol{q}}
+\newcommand{\bg}{\boldsymbol{g}}
+\newcommand{\balpha}{\boldsymbol{\alpha}}
+\newcommand{\bxi}{\boldsymbol{\xi}}
+
+% --- Fourth-Order Tensors ---
+\newcommand{\Ctan}{\mathbb{C}}
+\newcommand{\Etan}{\mathbb{E}}
+\newcommand{\Iten}{\mathbb{I}}
+
+% --- Lie Groups, Manifolds, and Spaces ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\SO}{\mathrm{SO}(3)}
+\newcommand{\GLp}{\mathrm{GL}^+(3)}
+\newcommand{\SPD}{\mathrm{Sym}^+(3)}
+\newcommand{\so}{\mathfrak{so}(3)}
+\newcommand{\gl}{\mathfrak{gl}(3)}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cV}{\mathcal{V}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cD}{\mathcal{D}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cH}{\mathcal{H}}
+
+% --- Norms and Inner Products ---
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\inner}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\trans}{\mathrm{T}}
+\newcommand{\inv}{-\mathrm{1}}
+
+\endinput

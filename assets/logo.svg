@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B2545"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#93C5FD"/>
+    </linearGradient>
+  </defs>
+  <rect x="24" y="24" width="208" height="208" rx="44" fill="url(#bg)" stroke="#60A5FA" stroke-width="4"/>
+  <!-- Stylized tensor/nabla + quill motif -->
+  <path d="M68 84 H140 L104 148 Z" fill="none" stroke="url(#accent)" stroke-width="10" stroke-linejoin="round"/>
+  <text x="148" y="138" font-family="Georgia, serif" font-size="64" font-weight="bold" font-style="italic" fill="#FFFFFF">σ</text>
+  <line x1="68" y1="182" x2="188" y2="182" stroke="#93C5FD" stroke-width="8" stroke-linecap="round"/>
+  <line x1="68" y1="202" x2="148" y2="202" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+</svg>

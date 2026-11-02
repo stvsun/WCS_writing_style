@@ -1,0 +1,78 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,amsthm,bm,mathtools}
+\usepackage{algorithm,algorithmic}
+\usepackage{graphicx,booktabs,hyperref}
+\usepackage{wsun_macros}
+
+\title{Thermodynamically Consistent Constitutive Modeling and Multiscale Poromechanics: Manuscript Skeleton}
+\author{Author One$^{1}$, WaiChing Sun$^{1,*}$ \\
+\small $^{1}$Department of Civil Engineering and Engineering Mechanics, Columbia University, New York, NY 10027, USA \\
+\small $^{*}$Corresponding author: \texttt{wsun@columbia.edu}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+% Move 1: Physical context & fundamental mathematical/computational bottleneck.
+Predictive modeling of fluid-saturated porous media requires constitutive laws that remain thermodynamically admissible across heterogeneous loading regimes.
+% Move 2: Proposed framework & mathematical mechanism.
+In this work, we formulate a structure-preserving constitutive framework that couples continuum poroplasticity with Sobolev-regularized neural potentials on invariant strain manifolds.
+% Move 3: Theoretical guarantees by construction.
+The effective Cauchy stress and internal state evolution derive directly from parameterized Helmholtz free-energy and dissipation functionals. This construction guarantees material frame indifference and satisfies the Clausius--Duhem inequality automatically.
+% Move 4: Verification & validation highlights.
+We verify the framework across cyclic material-point tests and three-dimensional hydro-mechanically coupled boundary-value problems. Supervising potential derivatives in the $H^1$ Sobolev norm preserves quadratic Newton--Raphson convergence even during post-peak strain localization.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+% Stage 1: Physical motivation and multiphysics coupling significance.
+Coupled hydro-mechanical processes in porous media govern applications ranging from geologic carbon storage to impact mitigation in saturated metamaterials. In these systems, pore-scale fluid transport and microstructural evolution directly drive macroscopic deformation. Consequently, purely empirical constitutive closures often fail outside narrow calibration regimes.
+
+% Stage 2: Taxonomy of existing paradigms and their exact bottlenecks.
+Classical phenomenological plasticity theories offer analytical tractability and guaranteed stability. However, their predefined yield surfaces rarely capture evolving fabric anisotropy or complex loading histories. Direct multiscale homogenization schemes, such as nested finite element ($\text{FE}^2$) or $\text{FE}\times\text{DEM}$ methods, resolve grain-scale kinematics directly. Yet these nested solvers incur prohibitive computational costs in three-dimensional boundary-value problems.
+
+% Stage 3: Proposed contribution and roadmap.
+To bridge microstructural fidelity and continuum-scale efficiency, we introduce a thermodynamically consistent, Sobolev-regularized neural constitutive framework. The remainder of this paper is organized as follows. Section~\ref{sec:formulation} presents the kinematics, balance laws, and thermodynamic restrictions of the coupled poromechanical system. Section~\ref{sec:implementation} details the Sobolev training formulation and consistent tangent derivation. Section~\ref{sec:examples} provides verification benchmarks and boundary-value simulations, and Section~\ref{sec:conclusion} summarizes our main findings.
+
+% Stage 4: Standard Notation Paragraph.
+As for notations and symbols, bold-faced letters denote tensors (including vectors which are rank-one tensors); the symbol `$\cdot$' denotes a single contraction of adjacent indices of two tensors (e.g., $\ten{a} \cdot \ten{b} = a_i b_i$ or $\ten{A} \cdot \ten{b} = A_{ij} b_j$); the symbol `$:$' denotes a double contraction of adjacent indices of tensor of rank two or higher (e.g., $\ten{A} : \ten{B} = A_{ij} B_{ij}$ or $\Ctan : \beps = C_{ijkl} \varepsilon_{kl}$); the symbol `$\otimes$' denotes a juxtaposed tensor product (e.g., $(\ten{a} \otimes \ten{b})_{ij} = a_i b_j$).
+
+\section{Thermodynamic Formulation and Governing Equations}
+\label{sec:formulation}
+
+Let $\cB \subset \R^{n_{\mathrm{dim}}}$ denote the spatial domain occupied by the porous medium with boundary $\partial \cB$. Under quasi-static, isothermal conditions, linear momentum balance for the homogenized mixture takes the form
+\begin{equation}
+  \nabla \cdot \left( \bsigmap - b p \bI \right) + \rho \bg = \ten{0} \quad \text{in } \cB,
+  \label{eq:momentum}
+\end{equation}
+where $\bsigmap$ denotes the Biot effective Cauchy stress tensor, $b \in [0, 1]$ is the Biot coefficient, $p$ is the pore fluid pressure, $\bI$ is the second-order identity tensor, $\rho$ is the mixture mass density, and $\bg$ is the gravitational body force vector.
+
+\begin{remark}[Recovery of Classical Terzaghi Effective Stress]
+\label{rem:terzaghi}
+When the solid grain bulk modulus $K_{\mathrm{s}}$ far exceeds the drained skeleton bulk modulus $K_{\mathrm{d}}$, the Biot coefficient approaches unity ($b = 1 - K_{\mathrm{d}}/K_{\mathrm{s}} \to 1$). In this incompressible-grain limit, Eq.~\eqref{eq:momentum} recovers the classical Terzaghi effective stress principle.
+\end{remark}
+
+\section{Sobolev Training and Algorithmic Implementation}
+\label{sec:implementation}
+
+Implicit finite element solvers require accurate second-order tangents from the learned free-energy functional $\psi_{\ten{\theta}}(\bepsel, \balpha)$. We therefore formulate the training objective in the $H^1$ Sobolev space:
+\begin{equation}
+  \cL(\ten{\theta}) = \frac{1}{N_{\mathrm{data}}} \sum_{k=1}^{N_{\mathrm{data}}} \left( w_{0} \norm{\psi_{\ten{\theta}}^{(k)} - \hat{\psi}^{(k)}}_{2}^{2} + w_{1} \norm{\frac{\partial \psi_{\ten{\theta}}^{(k)}}{\partial \bepsel} - \hat{\bsigma}'^{(k)}}_{2}^{2} \right),
+  \label{eq:sobolev_loss}
+\end{equation}
+where $\ten{\theta} \in \R^{N_{\theta}}$ collects the network parameters, $\hat{\psi}^{(k)}$ and $\hat{\bsigma}'^{(k)}$ denote the reference free energy and effective stress at sample $k$, and $w_{0}, w_{1} > 0$ are non-dimensional weights.
+
+\section{Numerical Examples}
+\label{sec:examples}
+
+We first verify frame indifference and thermodynamic consistency through material-point loading tests. We then demonstrate numerical stability in a three-dimensional drained compression boundary-value problem.
+
+\section{Conclusions}
+\label{sec:conclusion}
+
+We have presented a thermodynamically consistent constitutive framework that couples continuum poromechanics with Sobolev-regularized neural potentials. Future work will extend this small-strain isothermal formulation to finite-strain thermo-hydro-mechanical coupling with evolving fracture networks.
+
+\end{document}

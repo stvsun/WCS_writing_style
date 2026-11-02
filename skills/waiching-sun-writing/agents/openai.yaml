@@ -1,0 +1,4 @@
+interface:
+  display_name: "WaiChing Sun Writing & Revision"
+  short_description: "Write and revise papers, proposals, and student drafts in Prof. WaiChing Sun's style"
+  default_prompt: "Use $waiching-sun-writing to draft or revise this academic manuscript or grant proposal in Prof. WaiChing Sun's writing style, enforcing concise two-sentence splitting, thermodynamic/mathematical rigor, and audience-calibrated depth."
