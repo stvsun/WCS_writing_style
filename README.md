@@ -1,6 +1,6 @@
 # `WCS_writing_style` (`waiching-sun-writing`) — Multi-Agent Academic Writing Skill for Prof. WaiChing Sun
 
-This repository houses the **`waiching-sun-writing`** skill for **Google Antigravity**, **Claude Code**, and **OpenAI Codex**. It is designed to draft, structure, and revise academic journal manuscripts, research grant proposals (DoD ARO/AFOSR/ONR, NSF CMMI/OAC/CAREER, DOE ASCR/BES), and student/co-author drafts in the authentic writing style, mathematical notation, and rhetorical structure of **Prof. WaiChing Sun** (Columbia University), synthesized with *The Elements of Style* and *The Craft of Research*.
+This repository houses the **`waiching-sun-writing`** skill for **Google Antigravity**, **Claude Code**, and **OpenAI Codex**. It is designed to draft, structure, and revise academic journal manuscripts, research grant proposals (DoD ARO/AFOSR/ONR, NSF CMMI/OAC/CAREER, DOE ASCR/BES), and student/co-author drafts in the authentic writing style, mathematical notation, and rhetorical structure of **Prof. WaiChing Sun** (Columbia University).
 
 ---
 
